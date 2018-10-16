@@ -1,0 +1,25 @@
+<style>
+  table, td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+</style>
+
+<h2>Do The Thing List</h2>
+<ul class="users">
+  <tr *ngFor="let user of users"
+      [class.selected]="user === selectedUser"
+      (click)="onSelect(user)">
+    <span text="badge">{{user.name}}
+      <table>
+        <tr *ngFor="let todo of todos">
+          <td *ngIf="user.id == todo.userId">
+            {{ todo.title }}</td>
+          <td *ngIf="user.id == todo.userId">
+            {{ todo.completed? "✔" : " " }}</td>
+        </tr>
+      </table>
+    </span>
+  </tr>
+</ul>
